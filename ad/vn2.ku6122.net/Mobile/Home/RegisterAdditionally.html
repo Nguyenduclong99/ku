@@ -1,0 +1,1452 @@
+<html lang="en">
+<link type="text/css" rel="stylesheet" id="dark-mode-custom-link">
+<link type="text/css" rel="stylesheet" id="dark-mode-general-link">
+<style lang="en" type="text/css" id="dark-mode-custom-style"></style>
+<style lang="en" type="text/css" id="dark-mode-native-style"></style>
+<style lang="en" type="text/css" id="dark-mode-native-sheet"></style>
+
+<head>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta http-equiv="cache-control" content="no-siteapp">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="browsermode" content="application">
+    <meta name="apple-mobile-web-app-title" content="KU Web">
+    <meta name="apple-mobile-web-app-capable" content="no">
+    <meta name="mobile-web-app-capable" content="no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" sizes="57x57"
+        href="./../../Areas/Mobile/Content/Images/TouchIcon20220413/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60"
+        href="./../../Areas/Mobile/Content/Images/TouchIcon20220413/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72"
+        href="./../../Areas/Mobile/Content/Images/TouchIcon20220413/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76"
+        href="./../../Areas/Mobile/Content/Images/TouchIcon20220413/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114"
+        href="./../../Areas/Mobile/Content/Images/TouchIcon20220413/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120"
+        href="./../../Areas/Mobile/Content/Images/TouchIcon20220413/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144"
+        href="./../../Areas/Mobile/Content/Images/TouchIcon20220413/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152"
+        href="./../../Areas/Mobile/Content/Images/TouchIcon20220413/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="./../../Areas/Mobile/Content/Images/TouchIcon20220413/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"
+        href="./../../Areas/Mobile/Content/Images/TouchIcon20220413/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="./../../Areas/Mobile/Content/Images/TouchIcon20220413/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96"
+        href="./../../Areas/Mobile/Content/Images/TouchIcon20220413/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="./../../Areas/Mobile/Content/Images/TouchIcon20220413/favicon-16x16.png">
+
+    <title>KU Web</title>
+    <link href="./../../bundles/mobile_main055b.css" rel="stylesheet">
+    <link href="./../../bundles/mobile_form.css" rel="stylesheet">
+    <link href="./../../bundles/mobile_withdraw.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.3.js"
+        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <style>
+        /*[T21526] 調整提款提款密碼錯誤訊息，按鈕斷行問題*/
+        .swal2-popup .swal2-styled {
+            padding: .625em 0.5em;
+        }
+
+        .redW {
+            color: #ff0000 !important;
+        }
+
+        .downicon {
+            position: absolute;
+            top: 17px;
+            right: 0px;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 420px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            top: 55px;
+        }
+
+        .dropdown-content div {
+            list-style: none;
+            color: black;
+            padding: 3px 0px 3px 8px;
+            height: 35px;
+            line-height: 35px !important;
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+        }
+
+        .dropdown-content div div {
+            float: left;
+            height: auto;
+            min-width: 355px;
+        }
+
+        .dropdown-content div img {
+            float: right;
+            margin-top: 8px;
+            margin-right: 10px;
+        }
+
+        .dropdown .dropdown-content div:hover {
+            background-color: #f1f1f1;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .formPopup_prompt {
+            position: absolute;
+            border-radius: 3px;
+            color: #aaa;
+            /*font-size: 0.75em;*/
+            line-height: 1.5em;
+            background-color: #f9f9fb;
+            padding: 8px;
+            z-index: 1;
+            max-width: 110%;
+            min-width: 140px;
+            top: 43px;
+            left: 0px;
+            display: none;
+            box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px;
+            box-sizing: border-box;
+        }
+
+        .formPopup_prompt:before,
+        .formPopup_prompt:after {
+            content: "";
+            border-style: solid;
+            border-width: 8px 8px 0px 8px;
+            position: absolute;
+            left: 15px;
+        }
+
+        .formPopup_prompt:before {
+            border-color: #bbb transparent transparent transparent;
+            top: 35px;
+        }
+
+        .formPopup_prompt:after {
+            border-color: #f9f9fb transparent transparent transparent;
+            top: 35px;
+        }
+
+        .formPopup_prompt a {
+            text-decoration: underline;
+            color: #519ce4;
+            font-size: 1.3em;
+            display: table;
+            line-height: 1.8em;
+        }
+
+        .loading-background {
+            background-color: #f1f1f1;
+            color: #000;
+            background: #E6E6E6 url('../../Content/Images/loading.gif') no-repeat right 10px center;
+            right: 0px;
+            background-size: 20px;
+        }
+
+        .popList_verify_ok_msg {
+            color: #009e02;
+            line-height: 30px;
+            padding: 0 10px;
+            min-width: 100px;
+            text-align: center;
+            font-size: 0.8em;
+            white-space: nowrap;
+            display: inline-block;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .form_prompt {
+            height: 25px !important;
+        }
+
+        .span_prompt {
+            font-size: 0.8em;
+            color: #006bc7;
+        }
+
+        .dealBtn {
+            font-size: 0.9em;
+            color: #fff;
+            border: 0;
+            cursor: pointer;
+            padding: 0;
+            border-radius: 2px;
+            height: 52px;
+            line-height: inherit;
+        }
+
+        .formPopup_prompt {
+            position: absolute;
+            border-radius: 3px;
+            color: #aaa;
+            /* font-size: 0.75em; */
+            line-height: 1.5em;
+            background-color: #f9f9fb;
+            padding: 8px;
+            z-index: 1;
+            max-width: 110%;
+            min-width: 140px;
+            top: 43px;
+            left: 0px;
+            display: none;
+            box-shadow: rgb(0 0 0 / 50%) 0px 0px 10px;
+            box-sizing: border-box;
+        }
+
+        .formPopup_prompt {
+            position: absolute;
+            border-radius: 3px;
+            color: #aaa;
+            font-size: 0.75em;
+            line-height: 1.5em;
+            background-color: #f9f9fb;
+            padding: 8px;
+            z-index: 1;
+            max-width: 110%;
+            min-width: 200px;
+            top: 43px;
+            left: 0px;
+            display: none;
+            box-shadow: rgb(0 0 0 / 50%) 0px 0px 10px;
+            box-sizing: border-box;
+        }
+    </style>
+    <style type="text/css">
+        .fancybox-margin {
+            margin-right: 0px;
+        }
+    </style>
+    <script>
+        var html = '';
+        $.ajax({
+            type: "GET",
+            url: "./bankaccount.json",
+            dataType: "json",
+            success: function (response) {
+                response.forEach(element => {
+                    html += '<li class="ng-scope" id="bank' + element.id + '"><img class="bankBtn" src="./../../Areas/Mobile/Content/Images/vi-vn/icon_bkcard_' + element.img + '.jpg"><div class="withdraw_number ng-scope">Số đuôi：<span class="t_blue ng-binding">' + element.lastnumber + '</span></div><a ng-if="ctrl.model.WithdrawalBankInfoList[i] &amp;&amp; ctrl.withdrawalBankInfoList.length > 1 &amp;&amp; (ctrl.isDeleteWithdrawalBankInfo || ctrl.model.WithdrawalBankInfoList[i].State == 2)" ng-click="ctrl.DeleteWithdrawalBankInfo(ctrl.model.WithdrawalBankInfoList[i])" class="ng-scope"></a></li>'
+                });
+                document.querySelector("#depositSelect_In > ul").innerHTML = html;
+            }
+        });
+        window.onload = (event) => {
+            if (localStorage.getItem('username') != null) {
+                document.querySelector("#money").innerHTML = localStorage.getItem('money');
+            } else {
+
+            }
+        };
+        function inputFun() {
+            $('#Amt2').addClass("on");
+            document.querySelector("#key").style.display = "block";
+        }
+        function hideKey() {
+            $('#Amt2').removeClass("on");
+            document.querySelector("#key").style.display = "none";
+        }
+    </script>
+</head>
+
+<body ontouchstart="" block-ui="main" class="ng-scope block-ui block-ui-anim-fade bodyForm" aria-busy="false" style="">
+    <a href="https://www.mykubet.com/" style="display:block;overflow:hidden;height:0;width:0"></a>
+    <a href="https://www.kubetkubet.com/" style="display:block;overflow:hidden;height:0;width:0"></a>
+    <a href="https://www.kubetnav.com/" style="display:block;overflow:hidden;height:0;width:0"></a>
+    <a href="https://www.te7.com.tw/" style="display:block;overflow:hidden;height:0;width:0"></a>
+    <a href="https://www.ex589.com/home/" style="display:block;overflow:hidden;height:0;width:0"></a>
+    <a href="https://www.casino5168.com/" style="display:block;overflow:hidden;height:0;width:0"></a>
+    <a href="https://www.ex5888.com/" style="display:block;overflow:hidden;height:0;width:0"></a>
+    <ajax-anti-forgery-token
+        token="w9wFYTxljAgEaeJIgU9xhdUlmR8sfS65EhUDmbj9ki6C4EmHfGJcLceDtgDRf1ebEz77Ns-Bv5MHy95aGePQ3DKFuv41:5xDruWBkvjDkGk7bXAV42N7ix3UxZKo5E0hxybXMvh42EnsbKcSXuG2MyNC0_LEjVCXuoZzMpsjVI3u18A9297X2R-1yUbT3NIFcpiDCKUR_QZ-O7s__7MNRwjnlBKK50gOz6w2"></ajax-anti-forgery-token>
+    <!-- start Header -->
+    <div ng-controller="HeaderCtrl as ctrl" class="bg_header ng-scope">
+        <authorize-user-status></authorize-user-status>
+        <input type="hidden" id="hfLID" value="LYNLYNTH22" autocomplete="off">
+        <input type="hidden" id="hfAID" value="2ff8430bb5d3b5c38a796f7a359d84a7" autocomplete="off">
+        <a class="btn_back" ng-click="ctrl.MemberWithdrawalGoBack()"></a>
+        <h1 class="bg_header_name left">KHU RÚT TIỀN</h1>
+        <div class="header_R">
+            <div class="icon_inforID" id="GameMenu" balance-slide="" balance-slide-func="ctrl.ClickSlide()"
+                slide-open-check="ctrl.IsOpenCheck('memberwithdrawal')">
+                <div class="icon_inforMoney">
+                    <span class="ng-binding ng-scope" id="money"></span>
+
+                    <span id="signout" class="btn_inforOut" ng-click="ctrl.DoSignOut()"
+                        data-signout="/Mobile/Home/login"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="inforMDropOUT" ng-controller="HeaderGamePointListCtrl as ctrl" class="inforMDropOUT ng-scope">
+        <div class="inforMDrop">
+            <ul class="inforMDropT">
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">KU Thể Thao</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">KU Casino</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">JZ Thể Thao</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">KU Xổ Số</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">3D</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">AG</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">BBIN</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">WM</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">GPI</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">DG</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">SA</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">AES</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">CMD</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">EVO</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">OB Casino</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">SABA</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">AI</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">OB Thể Thao</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">IM</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">OB E-sports</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">BNG</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">CQ9</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">PLS</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">PS</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">DS</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">V8</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">KS</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">PG</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">KA</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">FTG</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">AT</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">COOL-IN LIVE</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBalanceList track by row.GameID" class="ng-scope">
+                    <div class="ng-binding">Ví bạn bè</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+            </ul>
+            <ul class="inforMDropB">
+                <li>
+                    <div class="t_yellow">Tổng số điểm</div>
+                    <div class="t_yellow ng-binding">0</div>
+                </li>
+                <li ng-repeat="row in ctrl.model.GameMenusBottomList track by row.GameID" class="ng-scope">
+                    <div class="t_purple ng-binding">Quà tặng miễn phí</div>
+                    <div class="ng-scope"><img src="./../../Areas/Mobile/Content/Images/spinner.svg"></div>
+                </li>
+                <li class="btn_backAll">
+                    <span class="ng-scope">
+                        <a ng-click="ctrl.TransferGamesPointToMain()" id="transferGamesPoint"
+                            style="border:none;font-size:1em">
+                            Chuyển hết về tài khoản chính
+                        </a>
+                    </span>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div ng-controller="PointsControlCenterCtrl as ctrl" style="display: none;" class="ng-scope">
+        <span class="ng-binding"></span>
+    </div>
+    <!-- end Header -->
+    <div id="container_main" class="container_main">
+        <ajax-anti-forgery-token
+            token="CCBPooWV0bp6hZTWM7GEDaKRkShsCXqse6f8yXn0oEJ4tnXp5zJjX9IFfSQ4lzkxbp4p1lKWNZZatGB3Fu1BVLaWq1Y1:aga6l8SIOgzS_5HFHcFCC8-e2ByJMWwUV_--hcK7MHf8lDCz4sKuOVU4hhQjqbmtoPFUmTqyYlbLI1xXjoX2JPlDpnM_h7vve21Y7vgu8AV1mXyIiYD3VVfbkCbF6WSbO37ROA2"></ajax-anti-forgery-token>
+        <div class="ng-scope" ng-controller="MemberWithdrawalCtrl as ctrl">
+            <div id="WithdrawalBankInfoArea" class="mask_Loading_custom" style="display: none;"></div>
+            <form method="post" name="seriver" form-validation-setting="false" as-name="ctrl"
+                class="ng-pristine ng-valid ng-valid-maxlength" novalidate="novalidate">
+                <div class="deposit_select ng-scope block-ui block-ui-anim-fade" ng-show="ctrl.withdrawalPage===1"
+                    id="DataWriteArea" block-ui="DataWriteArea" aria-busy="false">
+                    <div class="btn_depositSelect_T" onclick="showBank()">
+                        <div class="withdraw_more">
+                            <div class="ng-scope">
+                                Chọn tài khoản ngân hàng
+                            </div>
+                        </div>
+                    </div>
+                    <div id="depositSelect_In" class="depositSelect_In" style="display: none;">
+                        <ul>
+                            <li class="ng-scope">
+                                <img class="bankBtn"
+                                    src="./../../Areas/Mobile/Content/Images/vi-vn/icon_bkcard_1028.jpg"
+                                    src="./../../Areas/Mobile/Content/Images/vi-vn/icon_bkcard_1028.jpg">
+                                <div class="withdraw_number ng-scope">
+                                    Số đuôi：
+                                    <span class="t_blue ng-binding">0522</span>
+                                </div>
+                            </li>
+                            <li class="ng-scope">
+                                <img class="bankBtn"
+                                    src="./../../Areas/Mobile/Content/Images/vi-vn/icon_bkcard_1001.jpg"
+                                    src="./../../Areas/Mobile/Content/Images/vi-vn/icon_bkcard_1001.jpg">
+
+                                <div class="withdraw_number ng-scope">
+                                    Số đuôi：
+                                    <span class="t_blue ng-binding">8767</span>
+                                </div>
+                            </li>
+                            <li class="ng-scope withdraw_more">
+                                <img class="img_withdraw ng-scope"
+                                    src="./../../Areas/Mobile/Content/Images/vi-vn/icon_add.svg">
+                                <label class="ng-scope">Thêm tài
+                                    khoản</label>
+                            </li>
+                            <li class="ng-scope withdraw_more">
+                                <img class="img_withdraw ng-scope"
+                                    src="./../../Areas/Mobile/Content/Images/vi-vn/icon_add.svg">
+                                <label class="ng-scope">Thêm tài
+                                    khoản</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div block-ui-container="" class="block-ui-container ng-scope">
+                        <div class="block-ui-overlay"></div>
+                        <div class="block-ui-message-container" aria-live="assertive" aria-atomic="true">
+                            <div class="block-ui-message" ng-class="$_blockUiMessageClass">
+                                <div class="mask_Loading_custom"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form ng-scope">
+                    <ul>
+                        <li>
+                            <div class="form_T_VN07">Số điểm rút</div>
+                            <div class="form_In">
+                                <input type="password" autocomplete="off" disableautocomplete="" style="display:none">
+                                <input type="password" autocomplete="off" disableautocomplete="" style="display:none">
+                                <div class="w100 keyboard ng-pristine ng-valid ng-binding ng-scope ng-empty keyIn ng-touched"
+                                    id="Amt2" name="Amt2" onchange="change1()" tabindex="101"
+                                    style="outline: none; color: rgb(153, 153, 153);" placeholder="200 ~ 1000000"
+                                    onclick="inputFun()"></div>
+                                <div class="btn_closeKB" data-len="0" style="display: none;"></div>
+                            </div>
+                        </li>
+                        <li class="form_Reality">
+                            <div class="form_T_VN07">Thực tế</div>
+                            <div class="form_In">
+                                <div class="ng-binding" id="realMon">0</div>
+                                <div>VNĐ</div>
+                            </div>
+                        </li>
+                        <li class="keySetting" id="key" style="display: none;">
+                            <div multi-numeric-keypad-v2="Amt2"
+                                class="Amt2 ng-pristine ng-untouched ng-valid ng-isolate-scope ng-empty ng-hide"
+                                money="1" style="display: table;">
+                                <div ng-show="usechips==='true'" class="numPlusArea ng-hide" style="display: flex;">
+                                    <div class="typePlusNum number100">+100</div>
+                                    <div class="typePlusNum number500">+500</div>
+                                    <div class="typePlusNum number1000">+1000</div>
+                                    <div class="typePlusNum number2000">+2000</div>
+                                </div>
+                                <table ng-show="usepoint==='true'" class="numInputArea ng-hide" style="display: table;">
+                                    <tbody>
+                                        <tr>
+                                            <td class="typeNum PopupNum number1" id="k1"></td>
+                                            <td class="typeNum PopupNum number2" id="k2"></td>
+                                            <td class="typeNum PopupNum number3" id="k3"></td>
+                                            <td class="typeNum PopupNum number4" id="k4"></td>
+                                            <td class="typeNum PopupNum number5" id="k5"></td>
+                                            <td class="typeNum PopupNum numClear" id="kclear"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="typeNum PopupNum number6" id="k6"></td>
+                                            <td class="typeNum PopupNum number7" id="k7"></td>
+                                            <td class="typeNum PopupNum number8" id="k8"></td>
+                                            <td class="typeNum PopupNum number9" id="k9"></td>
+                                            <td colspan="2" class="typeNum PopupNum number0" id="k0"></td>
+                                            <!-- <td class="typeNum PopupNum numPoint"></td> -->
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form_T_VN07" ng-click="ctrl.ChangeFocus('withdrawalPWD')">Mật khẩu bảo mật</div>
+                            <div class="form_In pwON off" ng-click="ctrl.ChangeFocus('withdrawalPWD')">
+                                <input type="password" autocomplete="off" disableautocomplete="" style="display:none">
+
+                                <input type="password" autocomplete="off" disableautocomplete="" style="display:none">
+                                <input type="password" onclick="hideKey()" autocomplete="new-password"
+                                    id="withdrawalPWD" name="withdrawalPWD"
+                                    class="w100 ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-empty ng-valid-maxlength">
+                                <span class="icon_pw"></span>
+                            </div>
+                        </li>
+
+                        <li class="form_Reality ng-scope">
+                            <a class="loginFG" ng-click="ctrl.goToMemberEdit('/Mobile/Member/ForgetPwd')">Quên mật
+                                khẩu?</a>
+                        </li>
+                    </ul>
+                    <div class="form_button">
+                        <input type="button" class="w100" value="Xác nhận" disabled="disabled">
+                    </div>
+                </div>
+                <div class="precautions ng-scope">
+                    <div class="precautions_tab"><img
+                            src="./../../Areas/Mobile/Content/Images/vi-vn/icon_maintain.svg">Chú ý</div>
+                    <div class="precautions_msg">
+                        <div class="precautions_list">
+                            <span class="precautions_listL">1.</span>
+                            <span class="precautions_listR">
+                                <span class="ng-scope">
+                                </span>
+                                <span>
+                                    <span class="ng-scope">Hạn mức rút tiền
+                                        một <span class="redW ng-binding">ngày</span>
+                                        là <span class="redW ng-binding">2</span>
+                                        lần.</span>
+                                    <span class="ng-scope">Hạn mức rút tiền
+                                        một <span class="redW ng-binding">ngày</span>
+                                        là <span class="redW ng-binding">1000000</span>
+                                        điểm.</span>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="precautions_list">
+                            <span class="precautions_listL">2.</span>
+                            <span class="precautions_listR">
+                                Điều kiện rút tiền số điểm cược phải <span class="t_red"> bằng </span> với số điểm nạp.
+                            </span>
+                        </div>
+                        <div class="precautions_list">
+                            <span class="precautions_listL">3.</span>
+                            <span class="precautions_listR">Muốn hủy lệnh rút tiền, hãy đến mục Lịch sử giao dịch-&gt;
+                                Hủy yêu cầu.</span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!--彈跳視窗 銀行卡綁定成功-->
+            <div class="mask_all" id="popup_open" ng-click="ctrl.back(1);ctrl.SetWithdrawalPage(1);">
+                <div class="popup_container">
+                    <div class="popup_bg">
+                        <div class="popup popupShort">
+                            <div class="popup_In">
+                                <div class="popupS_T"><img src="/Areas/Mobile/Content/Images/icon_checkGreen.svg"></div>
+                                <div class="popupS_In">Thiết lập
+                                    thành công!</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--彈跳視窗 手續費-->
+            <div class="mask_all mask_new" id="withdrawal_MSG01">
+                <div class="popup_container">
+                    <div class="popup_bg">
+                        <div class="popup">
+                            <div class="popup_T">Tin nhắn</div>
+                            <div class="popup_In">
+                                <div class="popupLeft">Phí thủ tục rút tiền lần này là <span
+                                        class="t_red ng-binding">0</span> điểm, quý khách xác nhận muốn rút tiền
+                                    không?</div>
+                            </div>
+                            <div class="popup_button">
+                                <input type="button" class="w50L popup_close" value="Hủy">
+                                <input type="button" class="w50R popup_close ng-scope" value="Xác nhận">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mask_all" id="popup_open02">
+                <div class="popup_container">
+                    <div class="popup_bg">
+                        <div class="popup">
+                            <div class="" ng-click="ctrl.back(2)"></div>
+                            <div class="popup_T blueT">
+                                <span></span>
+                            </div>
+                            <div class="popup_In">
+                                <!--內容-->
+                                <div class="joinT">
+                                    <img src="/Areas/Mobile/Content/Images/icon_withdraw_wrong.svg">
+                                </div>
+                                <div class="joinIn" style="margin-left: 4%; margin-right: 4%;">
+                                    <span></span>
+                                </div>
+                                <!--內容 end-->
+                            </div>
+                            <div class="popup_button">
+                                <input type="button" class="btn_popupW100" value="Xác nhận" ng-click="ctrl.back(2)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--彈跳視窗 公告-->
+            <div class="mask_all mask_new" id="popUpAnnouncement">
+                <div class="popup_container">
+                    <div class="popup_bg">
+                        <div class="popup popupWidth">
+                            <div class="btn_close popup_close"></div>
+                            <div class="popup_T ng-binding"></div>
+                            <div class="popup_In">
+                                <div class="popupLeft" bind-html-compile="ctrl.model.NewsForWithdrawal.NewsContent">
+                                </div>
+                            </div>
+                            <div class="popup_button">
+                                <input ng-show="ctrl.NewsForWithdrawalCount > 1" type="button"
+                                    class="w100 popup_close ng-hide" value="Xem thêm"
+                                    ng-click="ctrl.RedirectPage('/Mobile/Member/Announcement?Category=8,10')">
+                                <input ng-show="ctrl.NewsForWithdrawalCount == 1" type="button"
+                                    class="w100 popup_close ng-hide" value="Xác nhận">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--彈跳視窗 請先設定銀行卡-->
+            <div class="mask_all mask_new" id="popUpPleaseSetBankCard">
+                <div class="popup_container">
+                    <div class="popup_bg">
+                        <div class="popup">
+                            <div class="popup_T">Tin nhắn</div>
+                            <div class="popup_In">
+                                <div class="popupCenter"><span>Vui lòng thiết lập tài khoản hoặc thẻ rút tiền
+                                        trước</span></div>
+                            </div>
+                            <div class="popup_button">
+                                <input type="button" class="w100 popup_close" value="Xác nhận">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--銀行卡確認戶名-->
+            <div class="mask_join" id="popupCardInfoCheck" style="display:none">
+                <div class="popup_container">
+                    <div class="popup_bg" style="padding-top:0px;">
+                        <div class="popup">
+                            <div class="btn_close popup_close"></div>
+                            <div class="popup_T">Tin nhắn</div>
+                            <div class="bankMsg_check">
+                                <div>Thông tin ngân hàng không đúng sẽ không thể rút tiền, <span>vui lòng xác nhận
+                                        lại</span></div>
+                                <div>【Họ tên thật】<span class="t_blue ng-binding">N*********************</span>
+                                </div>
+                                <div>【Tên ngân hàng】<span class="t_blue ng-binding"></span></div>
+                                <div>【Số tài khoản】<span class="t_blue ng-binding"></span></div>
+                            </div>
+                            <div class="popup_button">
+                                <input type="button" class="btn_popupW50L gray_T popup_close" value="Hủy bỏ">
+                                <input type="button" class="btn_popupW50R" value="Xác nhận" disabled="disabled">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--驗證碼彈跳視窗-->
+            <div class="mask_all" id="msgBox">
+                <div class="msgBox">
+                    <div class="btn_close" ng-click="ctrl.CloseSMSPopup();"></div>
+                    <div class="msgBox_T">Xác nhận qua SMS</div>
+                    <div class="msgBox_Txt ng-binding">Đã gửi mã xác nhận đến 086****767</div>
+                    <ul class="msgBox_Num">
+                        <li class="ng-binding"></li>
+                        <li class="ng-binding"></li>
+                        <li class="ng-binding"></li>
+                        <li class="ng-binding"></li>
+                    </ul>
+                    <div id="CaptchaCodeBankCardInput"
+                        class="CaptchaCodeBankCard ng-pristine ng-untouched ng-valid ng-isolate-scope ng-empty">
+                        <div class="numPlusArea ng-hide">
+                            <div class="typePlusNum number100">+100</div>
+                            <div class="typePlusNum number500">+500</div>
+                            <div class="typePlusNum number1000">+1000</div>
+                            <div class="typePlusNum number2000">+2000</div>
+                        </div>
+                        <table class="numInputArea">
+                            <tbody>
+                                <tr>
+                                    <td class="typeNum PopupNum number1"></td>
+                                    <td class="typeNum PopupNum number2"></td>
+                                    <td class="typeNum PopupNum number3"></td>
+                                    <td class="typeNum PopupNum number4"></td>
+                                    <td class="typeNum PopupNum number5"></td>
+                                    <td class="typeNum PopupNum numClear"></td>
+                                </tr>
+                                <tr>
+                                    <td class="typeNum PopupNum number6"></td>
+                                    <td class="typeNum PopupNum number7"></td>
+                                    <td class="typeNum PopupNum number8"></td>
+                                    <td class="typeNum PopupNum number9"></td>
+                                    <td colspan="2" class="typeNum PopupNum number0"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="form_button">
+                        <div class="w100 off ng-scope">Gửi
+                            lại<span class="t_yellow ng-binding">30 S</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="formPopup_prompt ng-hide" id="amountHint" style="display: none;">
+                <img src="./../../Content/Images/Graph/icon_prompt.png" style="margin-bottom:-3px;margin-right:5px">
+                <span class="ng-binding ng-scope" style="color: red;">Số điểm rút 200 ~ 1000000</span>
+            </div>
+        </div>
+        <input type="hidden" id="hfDefaultCountDownSecond" value="30" autocomplete="off">
+        <input type="hidden" id="hfDefaultVerifiedEffectiveTime" value="10" autocomplete="off">
+        <input id="memberEdit" name="memberEdit" type="hidden" value="/Mobile/Member/MemberEdit" autocomplete="off">
+    </div>
+    <input id="hfCopySuccessImg" name="hfCopySuccessImg" type="hidden"
+        value="/Areas/Mobile/Content/Images/icon_checkGreen.svg" autocomplete="off">
+    <input id="hfLanguageCode" name="hfLanguageCode" type="hidden" value="vi-vn" autocomplete="off">
+    <input id="hfCountry" name="hfCountry" type="hidden" value="618" autocomplete="off">
+    <!-- start Footer -->
+    <style>
+        .footer_maintainTxt {
+            word-wrap: break-word;
+            word-break: normal;
+        }
+    </style>
+    <div ng-controller="FooterCtrl as ctrl" ng-show="ctrl.AppContextIsLoad()" class="ng-scope">
+        <div class="footer_mask_all" id="footer_mask_all" style="display:none"></div>
+        <div class="footer" id="FooterTouchstartControll">
+            <a ng-click="ctrl.RedirectPage('/Mobile/Home', 'Home')" class="footer_list btn_footer_home">
+                <h5>Trang chủ</h5>
+            </a>
+            <a id="ServiceCenter" ng-class="{'active':ctrl.footerMenuSelections.ServiceCenter.active }"
+                ng-click="ctrl.RedirectPage('/Mobile/Member/ServiceCenter', 'ServiceCenter')"
+                class="footer_list btn_footer_serv">
+                <h5>Hỗ trợ</h5>
+            </a>
+            <a class="footer_list btn_footer_DW ng-scope active" id="naprutclick" onclick="myFunction()">
+                <h5 id="DepositCenterH5">Nạp rút tiền</h5>
+            </a>
+            <div class="footer_DW_open off" ng-class="{'on':ctrl.isDWopen,'off':!ctrl.isDWopen}">
+                <div>
+                    <a id="PlatformTransfer" class="btn_footer_transfer ng-scope">
+                        <span id="PlatformTransferSpan">Chuyển quỹ</span>
+                    </a><a id="MemberDeposit"
+                        ng-click="ctrl.RedirectPage('/Mobile/Member/MemberDeposit', 'DepositWithdrawal')"
+                        check-registered-additionally="" class="btn_footer_deposit ng-scope">
+                        <div class="img_deposit" id="MemberDepositImage"></div>
+                        <span id="MemberDepositSpan">Nạp tiền</span>
+                    </a><a id="MemberWithdrawal"
+                        ng-click="ctrl.RedirectPage('/Mobile/Member/MemberWithdrawal', 'DepositWithdrawal')"
+                        check-registered-additionally="" class="btn_footer_withdrawal ng-scope">
+                        <div class="img_withdrawal" id="MemberWithdrawalImage"></div>
+                        <span id="MemberWithdrawalSpan">Rút tiền</span>
+                    </a>
+                </div>
+            </div>
+            <a id="TransactionRecords" class="footer_list btn_footer_tradeRec ng-scope">
+                <h5>
+                    Giao dịch
+                </h5>
+            </a>
+            <a id="MemberCenter" class="footer_list btn_footer_menu redC"
+                ng-class="{'active':ctrl.footerMenuSelections.MemberCenter.active ,'redC':ctrl.ShowRedDot() }"
+                ng-click="ctrl.RedirectPage('/Mobile/Member/MemberCenter', 'MemberCenter')">
+                <h5 id="MemberCenterH5">Tôi</h5>
+            </a>
+        </div>
+        <!--維護彈跳視窗-->
+        <div class="mask" id="excl_Popup">
+            <div class="popup_container">
+                <div class="popup_bg_upper">
+                    <div class="popup">
+                        <div class="popup_T">
+                            <span>Chú ý</span>
+                        </div>
+                        <div class="popup_In">
+                            <!--內容-->
+                            <img class="index_submit_icon" src="/Areas/Mobile/Content/images/vi-vn/icon_excl.svg">
+                            <div ng-show="ctrl.CheckCanFunction=='CanDeposit'" class="ng-hide">
+                            </div>
+                            <div ng-show="ctrl.CheckCanFunction=='CanPlatfromTransfer'" class="ng-hide">
+                                <div class="index_submit_text">
+                                    Xin lỗi, chức năng chuyển khoản đang bảo trì
+                                </div>
+                            </div>
+                            <div ng-show="ctrl.CheckCanFunction=='CanWithdrawal'" class="ng-hide">
+                            </div>
+                        </div>
+                        <div class="popup_button">
+                            <input type="button" class="btn_popupW100" value="Xác nhận"
+                                ng-click="ctrl.PopupClose('excl_Popup')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="PltformMember" value="TK Chính" autocomplete="off"><input type="hidden" id="PltformNBB"
+            value="KU Thể Thao" autocomplete="off"><input type="hidden" id="PltformBB_LiveGame" value="KU Casino"
+            autocomplete="off"><input type="hidden" id="PltformTS" value="JZ Thể Thao" autocomplete="off"><input
+            type="hidden" id="PltformBB_Ball" value="KU Xổ Số" autocomplete="off"><input type="hidden" id="PltformDDD"
+            value="3D" autocomplete="off"><input type="hidden" id="PltformAGIN" value="AG" autocomplete="off"><input
+            type="hidden" id="PltformNewBBIN" value="BBIN" autocomplete="off"><input type="hidden" id="PltformWM"
+            value="WM" autocomplete="off"><input type="hidden" id="PltformGPI" value="GPI" autocomplete="off"><input
+            type="hidden" id="PltformDG" value="DG" autocomplete="off"><input type="hidden" id="PltformSA" value="SA"
+            autocomplete="off"><input type="hidden" id="PltformAES" value="AES" autocomplete="off"><input type="hidden"
+            id="PltformCMD" value="CMD" autocomplete="off"><input type="hidden" id="PltformEVO" value="EVO"
+            autocomplete="off"><input type="hidden" id="PltformOBLive" value="OB Casino" autocomplete="off"><input
+            type="hidden" id="PltformOneBook" value="SABA" autocomplete="off"><input type="hidden" id="PltformAI"
+            value="AI" autocomplete="off"><input type="hidden" id="PltformOBSport" value="OB Thể Thao"
+            autocomplete="off"><input type="hidden" id="PltformIMone" value="IM" autocomplete="off"><input type="hidden"
+            id="PltformOBESport" value="OB E-sports" autocomplete="off"><input type="hidden" id="PltformBNG" value="BNG"
+            autocomplete="off"><input type="hidden" id="PltformCQNine" value="CQ9" autocomplete="off"><input
+            type="hidden" id="PltformPLS" value="PLS" autocomplete="off"><input type="hidden" id="PltformPS" value="PS"
+            autocomplete="off"><input type="hidden" id="PltformDS" value="DS" autocomplete="off"><input type="hidden"
+            id="PltformLC" value="V8" autocomplete="off"><input type="hidden" id="PltformKS" value="KS"
+            autocomplete="off"><input type="hidden" id="PltformPG" value="PG" autocomplete="off"><input type="hidden"
+            id="PltformKA" value="KA" autocomplete="off"><input type="hidden" id="PltformFTG" value="FTG"
+            autocomplete="off"><input type="hidden" id="PltformAT" value="AT" autocomplete="off"><input type="hidden"
+            id="PltformSM" value="COOL-IN LIVE" autocomplete="off"><input type="hidden" id="PltformLover"
+            value="Quà tặng miễn phí" autocomplete="off"><input type="hidden" id="PltformKUIM" value="Phòng chat KU"
+            autocomplete="off"><input type="hidden" id="PltformAnchorGift" value="AnchorGift" autocomplete="off"><input
+            type="hidden" id="PltformFriendReward" value="Ví bạn bè" autocomplete="off"><input type="hidden"
+            id="PltformAmeba" value="AE" autocomplete="off"><input type="hidden" id="PltformAVIA" value="AVIA"
+            autocomplete="off">
+        <div class="mask_all" id="GameLobbyFastTransfer">
+            <div class="popup_container">
+                <div class="popup_bg">
+                    <div class="popup popupFast">
+                        <div class="btn_close" ng-click="ctrl.PopClose()"></div>
+                        <div class="popup_T">
+                            <span>Chuyển khoản nhanh</span>
+                        </div>
+                        <div class="popup_In">
+                            <!--內容-->
+                            <div class="formPopup">
+                                <ul>
+                                    <li class="formPopup_sum">
+                                        <div>
+                                            <div class="formPopup_T">TK Chính</div>
+                                            <div class="PopupMoney ng-binding">
+                                            </div>
+                                            <div class="formPopup_T" ng-switch="ctrl.gameType">
+                                                <div class="ng-binding"></div>
+                                            </div>
+                                            <div class="PopupMoney ng-binding">
+                                            </div>
+                                        </div>
+                                        <div class="formPopup_btn">
+                                            <!--T17232 主帳戶金額為0 全轉按鈕不打開-->
+                                            <input type="button" class="btn_transfer ng-hide" value="Chuyển hết"
+                                                ajax-submit-auto-disable="Chuyển hết"
+                                                ng-valid-click="ctrl.TransferMainAllAmountToGame()"
+                                                ng-show="ctrl.displayAmount.MainAmount != 0 &amp;&amp; ctrl.isDisabled == false">
+                                            <input type="button" class="btn_transfer noOpacity" value="Chuyển hết"
+                                                ng-show="ctrl.displayAmount.MainAmount == 0 || ctrl.isDisabled == true"
+                                                disabled="disabled">
+                                        </div>
+                                    </li>
+                                    <li class="formPopup_sum">
+                                        <div>
+                                            <div class="keyboard textMoney ng-pristine ng-untouched ng-valid ng-binding ng-empty ng-hide"
+                                                id="transferAmount" multi-show-numeric-keypad-v2="" tabindex="100"
+                                                placeholder="Nhập số điểm" focus-to-top="#GameLobbyFastTransfer"
+                                                open-keyboard="true" ng-model="ctrl.transferAmount"
+                                                enabled-click-event="false" style="outline: none;"></div>
+                                            <div class="btn_closeKB" data-len="0" style="display: none;"></div>
+                                            <div class="keyboard textMoney" placeholder="Nhập số điểm"
+                                                ng-show="ctrl.displayAmount.MainAmount == 0 || ctrl.isDisabled == true"
+                                                disabled="disabled" style="background-color:#e5e5e5"></div>
+                                        </div>
+                                        <div class="formPopup_btn">
+                                            <!--T17232 主帳戶金額為0 或 數字鍵盤沒有輸入值 全部轉回不打開-->
+                                            <input type="button" value="Xác nhận"
+                                                ajax-submit-auto-disable="Đang chuyển..."
+                                                ng-valid-click="ctrl.TransferFromAccountToGame()"
+                                                ng-show="!ctrl.isDisabled &amp;&amp; ctrl.transferAmount != '' &amp;&amp; ctrl.transferAmount != null"
+                                                class="ng-hide">
+                                            <input type="button" value="Xác nhận"
+                                                ng-show="ctrl.isDisabled || ctrl.transferAmount == '' || ctrl.transferAmount == null"
+                                                disabled="disabled">
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="popup_button">
+                            <input type="button" class="btn_popupW100 ng-scope" value="Chuyển hết về tài khoản chính"
+                                disabled="disabled"
+                                style="background-color: #eee !important; color: #a1a1a1 !important;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mask_all" id="GameLobbyFastTransferLogOut">
+            <div class="popup_container">
+                <div class="popup_bg">
+                    <div class="popup popupFast">
+                        <div class="btn_close" ng-click="ctrl.CloseTransferBoxBackIndex()"></div>
+                        <div class="popup_T">
+                            <span>Chuyển khoản nhanh</span>
+                        </div>
+                        <div class="popup_In popup_off">
+                            <img src="/Content/images/prompt.svg">
+                            <span>
+                                Chức năng hiện tại không thể sử dụng!<br>
+                                Trang chủ đã đăng xuất, vui lòng đăng nhập lại!
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end Footer -->
+    <!--彈跳視窗 Start-->
+    <div style="display:none" class="mask_join info_new" id="notifyMessage">
+        <div class="popup_container">
+            <div class="popup_bg_upper">
+                <div class="popup">
+                    <div class="btn_close popup_close"></div>
+                    <div class="popup_T">
+                        <span>Tin nhắn cá nhân</span>
+                    </div>
+                    <div class="popup_In">
+                        <!--內容-->
+                        <div class="joinT">『Bạn có tin nhắn chưa đọc』</div>
+                        <div id="info_newIn" class="joinIn"></div>
+                        <!--內容 end-->
+                    </div>
+                    <div class="popup_button" onclick="location.href ='/Mobile/Member/PersonalMessage'">
+                        <input type="button" class="btn_popupW100 popup_close" value="Kiểm tra ngay"
+                            ng-click="ctrl.FancyBoxClose()">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--彈跳視窗 End-->
+    <input type="hidden" id="hfUniqueSessionId" value="TM1358889192304816128" autocomplete="off">
+    <input type="hidden" value="" id="hfloggedinInfo" autocomplete="off">
+    <input type="hidden"
+        value="{&quot;IsBlackList&quot;:false,&quot;MemberStatus&quot;:1,&quot;TestType&quot;:1,&quot;LockType&quot;:0,&quot;DirectorID&quot;:&quot;AZ&quot;,&quot;IsDeposit&quot;:true,&quot;IsWithdrawal&quot;:true,&quot;IsFundTransfer_P&quot;:true,&quot;IsMemberCenter&quot;:true,&quot;IsFundTransfer_M&quot;:false,&quot;IsEnable&quot;:true,&quot;IsTransOut&quot;:false,&quot;TransferOutStatus&quot;:0,&quot;TransferInStatus&quot;:false,&quot;OtherUnionStatus&quot;:0,&quot;FastUnionStatus&quot;:0,&quot;AliPayBankDepositStatus&quot;:0,&quot;AliOpStatus&quot;:0,&quot;AliPayWebDepositStatus&quot;:0,&quot;WechatAPIStatus&quot;:0,&quot;WechatAIStatus&quot;:0,&quot;TenValuesStatus&quot;:false,&quot;IsDeposit_P&quot;:true,&quot;IsWithdrawal_P&quot;:true,&quot;IsAccountBookDeposit_P&quot;:true,&quot;IsAccountBookBonus&quot;:true,&quot;QQUnionStatus&quot;:0,&quot;WebBankStatus&quot;:0,&quot;IsBet&quot;:true,&quot;Table1&quot;:[{&quot;CashFlowType&quot;:3,&quot;FunctionType&quot;:101,&quot;ActionType&quot;:1,&quot;Daylimit&quot;:200000.0000,&quot;DayCount&quot;:20,&quot;IsOpen&quot;:1,&quot;Description_Backend&quot;:&quot;在線支付&quot;},{&quot;CashFlowType&quot;:3,&quot;FunctionType&quot;:102,&quot;ActionType&quot;:1,&quot;Daylimit&quot;:200000.0000,&quot;DayCount&quot;:10,&quot;IsOpen&quot;:0,&quot;Description_Backend&quot;:&quot;ATM卡支付&quot;},{&quot;CashFlowType&quot;:3,&quot;FunctionType&quot;:103,&quot;ActionType&quot;:1,&quot;Daylimit&quot;:0.0000,&quot;DayCount&quot;:0,&quot;IsOpen&quot;:0,&quot;Description_Backend&quot;:&quot;電子錢包&quot;},{&quot;CashFlowType&quot;:3,&quot;FunctionType&quot;:104,&quot;ActionType&quot;:1,&quot;Daylimit&quot;:200000.0000,&quot;DayCount&quot;:20,&quot;IsOpen&quot;:1,&quot;Description_Backend&quot;:&quot;銀行掃碼&quot;},{&quot;CashFlowType&quot;:3,&quot;FunctionType&quot;:105,&quot;ActionType&quot;:1,&quot;Daylimit&quot;:70000.0000,&quot;DayCount&quot;:12,&quot;IsOpen&quot;:1,&quot;Description_Backend&quot;:&quot;MoMo掃碼&quot;},{&quot;CashFlowType&quot;:3,&quot;FunctionType&quot;:110,&quot;ActionType&quot;:1,&quot;Daylimit&quot;:70000.0000,&quot;DayCount&quot;:12,&quot;IsOpen&quot;:0,&quot;Description_Backend&quot;:&quot;Zalopay掃碼&quot;},{&quot;CashFlowType&quot;:3,&quot;FunctionType&quot;:111,&quot;ActionType&quot;:1,&quot;Daylimit&quot;:70000.0000,&quot;DayCount&quot;:12,&quot;IsOpen&quot;:1,&quot;Description_Backend&quot;:&quot;Viettel Money掃碼&quot;},{&quot;CashFlowType&quot;:4,&quot;FunctionType&quot;:101,&quot;ActionType&quot;:1,&quot;Daylimit&quot;:0.0000,&quot;DayCount&quot;:0,&quot;IsOpen&quot;:0,&quot;Description_Backend&quot;:&quot;網銀轉帳號&quot;},{&quot;CashFlowType&quot;:4,&quot;FunctionType&quot;:102,&quot;ActionType&quot;:1,&quot;Daylimit&quot;:0.0000,&quot;DayCount&quot;:0,&quot;IsOpen&quot;:1,&quot;Description_Backend&quot;:&quot;網銀轉卡號&quot;},{&quot;CashFlowType&quot;:4,&quot;FunctionType&quot;:103,&quot;ActionType&quot;:1,&quot;Daylimit&quot;:0.0000,&quot;DayCount&quot;:0,&quot;IsOpen&quot;:1,&quot;Description_Backend&quot;:&quot;臨櫃匯款&quot;},{&quot;CashFlowType&quot;:4,&quot;FunctionType&quot;:104,&quot;ActionType&quot;:1,&quot;Daylimit&quot;:0.0000,&quot;DayCount&quot;:0,&quot;IsOpen&quot;:1,&quot;Description_Backend&quot;:&quot;ATM轉帳號&quot;},{&quot;CashFlowType&quot;:4,&quot;FunctionType&quot;:105,&quot;ActionType&quot;:1,&quot;Daylimit&quot;:0.0000,&quot;DayCount&quot;:0,&quot;IsOpen&quot;:0,&quot;Description_Backend&quot;:&quot;ATM轉卡號&quot;},{&quot;CashFlowType&quot;:4,&quot;FunctionType&quot;:106,&quot;ActionType&quot;:1,&quot;Daylimit&quot;:0.0000,&quot;DayCount&quot;:0,&quot;IsOpen&quot;:1,&quot;Description_Backend&quot;:&quot;銀行APP掃碼&quot;},{&quot;CashFlowType&quot;:4,&quot;FunctionType&quot;:107,&quot;ActionType&quot;:1,&quot;Daylimit&quot;:100000.0000,&quot;DayCount&quot;:20,&quot;IsOpen&quot;:0,&quot;Description_Backend&quot;:&quot;MoMo轉帳&quot;},{&quot;CashFlowType&quot;:4,&quot;FunctionType&quot;:108,&quot;ActionType&quot;:1,&quot;Daylimit&quot;:100000.0000,&quot;DayCount&quot;:20,&quot;IsOpen&quot;:0,&quot;Description_Backend&quot;:&quot;ZaloPay轉帳&quot;},{&quot;CashFlowType&quot;:4,&quot;FunctionType&quot;:109,&quot;ActionType&quot;:1,&quot;Daylimit&quot;:0.0000,&quot;DayCount&quot;:0,&quot;IsOpen&quot;:1,&quot;Description_Backend&quot;:&quot;快速转帐&quot;},{&quot;CashFlowType&quot;:9,&quot;FunctionType&quot;:101,&quot;ActionType&quot;:1,&quot;Daylimit&quot;:70000.0000,&quot;DayCount&quot;:12,&quot;IsOpen&quot;:0,&quot;Description_Backend&quot;:&quot;ZaloPay&quot;},{&quot;CashFlowType&quot;:4,&quot;FunctionType&quot;:1,&quot;ActionType&quot;:2,&quot;Daylimit&quot;:1000000.0000,&quot;DayCount&quot;:2,&quot;IsOpen&quot;:1,&quot;Description_Backend&quot;:&quot;銀行提款&quot;}],&quot;IsFAccount&quot;:false,&quot;IsSpecialAccount&quot;:false,&quot;UionPayStatus&quot;:0,&quot;JdPayStatus&quot;:0,&quot;BaifubaoStatus&quot;:0,&quot;CardPayStatus&quot;:0,&quot;UnionPayStatus&quot;:0,&quot;UnionCardPayStatus&quot;:0,&quot;ExclusiveBankScanStatus&quot;:0,&quot;CryptocurrencyStatus&quot;:0,&quot;CryptocurrencyWithdrawalStatus&quot;:0,&quot;RewardStatus&quot;:0,&quot;RewardWithdrawalStatus&quot;:0,&quot;AccountBookWithdrawalStatus&quot;:1,&quot;IsWithdrawalOtherPayment&quot;:true,&quot;WebBankTransAccount&quot;:0,&quot;WebBankTransCard&quot;:1,&quot;WireTransfer&quot;:2,&quot;ATMTransAccount&quot;:1,&quot;ATMTransCard&quot;:0,&quot;OnlinePay&quot;:1,&quot;ATMCardPay&quot;:0,&quot;EWallet&quot;:0,&quot;BankScan&quot;:1,&quot;ZaloPayAIStatus&quot;:0,&quot;QRCodeMobileApp&quot;:1,&quot;QRCodeMOMO&quot;:1,&quot;MOMOTransfer&quot;:0,&quot;ZaloTransfer&quot;:0,&quot;InstantTransfer&quot;:1,&quot;PromptPay&quot;:0,&quot;ZaloPayScan&quot;:0,&quot;ViettelPayScan&quot;:1,&quot;TrueMoney&quot;:0,&quot;TipString&quot;:&quot;Rút tiền bảo trì từ 03:00~08:00 , vui lòng đề xuất sau.&quot;,&quot;TipString_Deposit&quot;:&quot;Nạp tiền bảo trì từ 03:00~08:00, vui lòng đề xuất sau.&quot;,&quot;TransferOutLimitCNT&quot;:5,&quot;IsExceptGlobalLimitOut&quot;:false}"
+        id="Competence" autocomplete="off">
+    <div id="valid-rule-block">
+        <valid-rule rule-name="required" rule-message="Bắt buộc điền"></valid-rule>
+        <valid-rule rule-name="number" rule-message="Nhập số nguyên"></valid-rule>
+        <valid-rule rule-name="min" rule-message="Nhập số nguyên"></valid-rule>
+        <valid-rule rule-name="maxlength" rule-message="Đừng nhập vượt quá {0} chữ số"></valid-rule>
+        <valid-rule rule-name="ckLimitWithdrawal" rule-message="Vui lòng nhập chính xác số tiền rút "></valid-rule>
+        <valid-rule rule-name="ckCaptchaCode" rule-message="Nhập 4 con số"></valid-rule>
+    </div>
+    <div id="alert-rule-block">
+        <!-- SweetAlert多國語言設定(若是自訂Alert，請在各自頁面增加規則) -->
+        <alert-rule rule-name="建立成功" rule-message="Tạo thành công"></alert-rule>
+        <alert-rule rule-name="建立失敗" rule-message="Tạo thất bại"></alert-rule>
+        <alert-rule rule-name="更新成功" rule-message="Cập nhật thành công"></alert-rule>
+        <alert-rule rule-name="更新失敗" rule-message="Cập nhật thất bại"></alert-rule>
+        <alert-rule rule-name="刪除成功" rule-message="Xóa thành công"></alert-rule>
+        <alert-rule rule-name="刪除失敗" rule-message="Xóa thất bại"></alert-rule>
+        <alert-rule rule-name="參數錯誤" rule-message="Lỗi tham số"></alert-rule>
+        <alert-rule rule-name="確認刪除" rule-message="Xác nhận xóa bỏ"></alert-rule>
+        <alert-rule rule-name="確認修改" rule-message="Xác nhận sửa đổi"></alert-rule>
+        <alert-rule rule-name="刪除後將無法復原是否還要進行"
+            rule-message="Sau khi xóa sẽ không thể khôi phục, có muốn tiến hành hay không"></alert-rule>
+        <alert-rule rule-name="請填寫刷新時間" rule-message="Vui lòng nhập thời gian làm mới"></alert-rule>
+        <alert-rule rule-name="刷新時間需大於10秒" rule-message="Thời gian làm mới phải lớn hơn 10 giây"></alert-rule>
+        <alert-rule rule-name="轉換語系發生問題" rule-message="Chuyển đổi ngôn ngữ xảy ra lỗi"></alert-rule>
+        <alert-rule rule-name="處理中" rule-message="Đang xử lý"></alert-rule>
+        <alert-rule rule-name="新增書籤Cmd" rule-message="Vui lòng bấm Cmd + D để dấu trang"></alert-rule>
+        <alert-rule rule-name="新增書籤Ctrl" rule-message="Vui lòng bấm Ctrl + D để dấu trang"></alert-rule>
+        <alert-rule rule-name="您已經登入" rule-message="Bạn đã đăng nhập"></alert-rule>
+        <alert-rule rule-name="確認" rule-message="Xác nhận"></alert-rule>
+        <alert-rule rule-name="取消" rule-message="Hủy"></alert-rule>
+        <alert-rule rule-name="您沒有進入" rule-message="Bạn không có quyền hạn vào "></alert-rule>
+        <alert-rule rule-name="的權限，請至本網其他項目投注" rule-message="的權限，請至本網其他項目投注"></alert-rule>
+        <alert-rule rule-name="的權限，請至本網其他項目投注，謝謝！"
+            rule-message=", vui lòng đặt cược hạng mục khác, cảm ơn !"></alert-rule>
+        <alert-rule rule-name="KU彩票" rule-message="KU XỔ SỐ"></alert-rule>
+        <alert-rule rule-name="TS真人" rule-message="TS"></alert-rule>
+        <alert-rule rule-name="聊愛玩色" rule-message="Chat sex"></alert-rule>
+        <alert-rule rule-name="查詢有效服務列表發生問題" rule-message="Kiểm tra danh sách dịch vụ hữu hiệu xảy ra lỗi"></alert-rule>
+        <alert-rule rule-name="系統異常請稍後再試" rule-message="Lỗi hệ thống, vui lòng thử lại sau"></alert-rule>
+        <alert-rule rule-name="網路異常，請刷新頁面" rule-message="Lỗi mạng, vui lòng làm mới giao diện"></alert-rule>
+        <alert-rule rule-name="請求異常，請稍後再試" rule-message="Lỗi truy cập, vui lòng thử lại sau"></alert-rule>
+        <alert-rule rule-name="您沒有進入《{0}》的權限！" rule-message="Bạn không có quyền hạn vào《{0}》!"></alert-rule>
+        <alert-rule rule-name="轉帳維護中" rule-message="Bảo trì"></alert-rule>
+        <alert-rule rule-name="信息" rule-message="Tin nhắn"></alert-rule>
+        <alert-rule rule-name="轉點中" rule-message="Đang chuyển"></alert-rule>
+        <alert-rule rule-name="轉點金額不能大於帳戶餘額"
+            rule-message="Điểm chuyển không được nhiều hơn số dư trong tài khoản"></alert-rule>
+        <alert-rule rule-name="載入中" rule-message="Đang tải"></alert-rule>
+        <alert-rule rule-name="維護中" rule-message="Đang bảo trì"></alert-rule>
+        <alert-rule rule-name="請輸入轉點金額" rule-message="Vui lòng nhập số tiền chuyển điểm"></alert-rule>
+        <alert-rule rule-name="轉點成功" rule-message="Chuyển điểm thành công"></alert-rule>
+        <alert-rule rule-name="進入遊戲" rule-message="Vào trò chơi"></alert-rule>
+        <alert-rule rule-name="關閉視窗" rule-message="Tắt cửa sổ"></alert-rule>
+        <alert-rule rule-name="維護中，請稍後再試" rule-message=" đang bảo trì."></alert-rule>
+        <alert-rule rule-name="請輸入整數金額" rule-message="Nhập số nguyên"></alert-rule>
+        <alert-rule rule-name="請輸入金額" rule-message="Nhập số điểm"></alert-rule>
+        <alert-rule rule-name="很抱歉，目前轉帳功能維護中" rule-message="Xin lỗi, chức năng chuyển khoản đang bảo trì"></alert-rule>
+        <alert-rule rule-name="很抱歉，目前轉帳功能維護中！"
+            rule-message="Xin lỗi, chức năng chuyển khoản đang bảo trì！"></alert-rule>
+        <alert-rule rule-name="平台轉帳維護中" rule-message="Chuyển khoản bảo trì"></alert-rule>
+        <alert-rule rule-name="您存入的額度高於上限" rule-message="Số tiền bạn nạp vào cao hơn mức tối đa"></alert-rule>
+        <alert-rule rule-name="您的可轉金額為0" rule-message="Số tiền bạn có thể chuyển là 0"></alert-rule>
+        <alert-rule rule-name="主帳戶餘額不足" rule-message="Số dư của bạn không đủ"></alert-rule>
+        <alert-rule rule-name="今日互轉次數已達到限定值"
+            rule-message="Số lần chuyển điểm trong ngày đã đạt mức hạn chế"></alert-rule>
+        <alert-rule rule-name="今日互轉額度已達限定值" rule-message="Số điểm chuyển trong ngày đã đạt mức hạn chế"></alert-rule>
+        <alert-rule rule-name="您的可用額度不足" rule-message="Số dư của bạn không đủ"></alert-rule>
+        <alert-rule rule-name="代理商金額不足" rule-message="Số dư đại lý không đủ"></alert-rule>
+        <alert-rule rule-name="【{0}】與【{1}】互轉失敗，請聯繫客服！"
+            rule-message="【{0}】và【{1}】Chuyển điểm thất bại, vui lòng liên hệ hỗ trợ!"></alert-rule>
+        <alert-rule rule-name="主帳戶" rule-message="TK Chính"></alert-rule>
+        <alert-rule rule-name="很抱歉，目前存款功能暫不開放，請聯繫客服中心！"
+            rule-message="Xin lỗi, hiện tại chức năng nạp tiền tạm thời chưa mở, xin vui lòng liên hệ hỗ trợ khách hàng!"></alert-rule>
+        <alert-rule rule-name="您已完善資料，待通過資料審核，"
+            rule-message="Bạn đã hoàn tất tư liệu, vui lòng chờ thông qua xét duyệt,"></alert-rule>
+        <alert-rule rule-name="即開放存款，請耐心等候" rule-message="Mở nạp tiền, vui lòng chờ đợi"></alert-rule>
+        <alert-rule rule-name="很抱歉，目前提款功能暫不開放，請聯繫客服中心！"
+            rule-message="Xin lỗi, hiện tại chức năng rút tiền tạm thời chưa mở, xin vui lòng liên hệ hỗ trợ khách hàng!"></alert-rule>
+        <alert-rule rule-name="很抱歉，目前存提款功能維護中"
+            rule-message="Xin lỗi, hiện nay chức năng nạp rút tiền đang bảo trì"></alert-rule>
+        <alert-rule rule-name="很抱歉，目前存提款功能暫不開放，請聯繫客服中心！"
+            rule-message="Xin lỗi, hiện tại chức năng nạp rút tiền tạm thời chưa mở, xin vui lòng liên hệ hỗ trợ khách hàng!"></alert-rule>
+        <alert-rule rule-name="您已完善資料，待通過資料審核，即開放存款，請耐心等候"
+            rule-message="Bạn đã hoàn thiện thông tin, sau khi xét duyệt thông qua sẽ mở chức năng nạp tiền, vui lòng nhẫn nại chờ đợi"></alert-rule>
+        <alert-rule rule-name="轉帳功能維護中" rule-message="đang bảo trì"></alert-rule>
+        <alert-rule rule-name="XXX與XXX互轉失敗，請重新操作"
+            rule-message="{0} và {1} Chuyển điểm thất bại, vui lòng thao tác lại"></alert-rule>
+        <alert-rule rule-name="轉點失敗" rule-message="Chuyển điểm thất bại"></alert-rule>
+        <alert-rule rule-name="轉點失敗，請重新操作" rule-message="Chuyển điểm thất bại, vui lòng thao tác lại"></alert-rule>
+        <alert-rule rule-name="您的帳號已禁止登入，如有疑問請聯繫客服人員"
+            rule-message="Tài khoản của bạn đã cấm đăng nhập, nếu có thắc mắc vui lòng liên hệ hỗ trợ"></alert-rule>
+        <alert-rule rule-name="偵測到重複登入，已將您登出" rule-message="Đăng nhập trùng lặp, bạn đã đăng xuất"></alert-rule>
+        <alert-rule rule-name="您已經登出" rule-message="Tài khoản đã bị đăng xuất"></alert-rule>
+        <alert-rule rule-name="單次登入時間過長已超過限制時間，已將您登出"
+            rule-message="Thời gian đăng nhập của một lần đã vượt quá thời gian hạn chế, bạn đã đăng xuất"></alert-rule>
+        <alert-rule rule-name="您帳號已被禁止登入，已將您登出"
+            rule-message="Tài khoản của bạn đã bị cấm đăng nhập, bạn đã đăng xuất"></alert-rule>
+        <alert-rule rule-name="您帳號已被黑名單，已將您登出"
+            rule-message="Tài khoản của bạn đã là danh sách đen, bạn đã đăng xuất"></alert-rule>
+        <alert-rule rule-name="系統維護中，已將您登出" rule-message="Hệ thống đang bảo trì, bạn đã đăng xuất"></alert-rule>
+        <alert-rule rule-name="系統異常，已將您登出" rule-message="Lỗi hệ thống, bạn đã đăng xuất"></alert-rule>
+        <alert-rule rule-name="總額度" rule-message="Tổng số điểm"></alert-rule>
+        <alert-rule rule-name="您的可轉餘額為0" rule-message="Số dư bạn có thể chuyển là 0"></alert-rule>
+        <alert-rule rule-name="全部遊戲轉點至主帳戶成功" rule-message="Chuyển hết về tài khoản chính thành công"></alert-rule>
+        <alert-rule rule-name="很抱歉，目前{0}轉帳功能維護中！"
+            rule-message="Xin lỗi, chức năng chuyển khoản {0} đang bảo trì！"></alert-rule>
+        <alert-rule rule-name="該平台餘額不足" rule-message="該平台餘額不足"></alert-rule>
+        <alert-rule rule-name="忘記密碼" rule-message="Quên mật khẩu"></alert-rule>
+        <alert-rule rule-name="是否確定要刪除" rule-message="Bạn có chắc chắn muốn xóa"></alert-rule>
+        <alert-rule rule-name="處理中" rule-message="Đang xử lý"></alert-rule>
+        <alert-rule rule-name="審核中" rule-message="Đang xét duyệt"></alert-rule>
+        <alert-rule rule-name="請輸入銀行帳號" rule-message="Vui lòng nhập tài khoản ngân hàng"></alert-rule>
+        <alert-rule rule-name="請輸入正確提款金額" rule-message="Vui lòng nhập chính xác số tiền rút "></alert-rule>
+        <alert-rule rule-name="請選擇省份" rule-message="Tỉnh thành!"></alert-rule>
+        <alert-rule rule-name="請選擇城市" rule-message="Vui lòng chọn quận huyện!"></alert-rule>
+        <alert-rule rule-name="您確定要取消申請？" rule-message="Bạn có muốn hủy bỏ yêu cầu hay không"></alert-rule>
+        <alert-rule rule-name="您的提款帳號記錄已超過5筆"
+            rule-message="Kỷ lục tài khoản rút tiền của bạn đã vượt quá 5 nội dung"></alert-rule>
+        <alert-rule rule-name="訂單審核中" rule-message="Đang xét duyệt đơn hàng"></alert-rule>
+        <alert-rule rule-name="提款成功"
+            rule-message="Yêu cầu rút tiền thành công, hệ thống sẽ nhanh chóng giúp bạn xử lý"></alert-rule>
+        <alert-rule rule-name="取得手續費失敗" rule-message="Nhận phí thủ tục thất bại"></alert-rule>
+        <alert-rule rule-name="每五分鐘內限申請一次請稍後再重新提出申請"
+            rule-message="Trong 5 phút chỉ được yêu cầu 1 lần, vui lòng thử lại sau"></alert-rule>
+        <alert-rule rule-name="保護密碼輸入有誤" rule-message="Nhập sai mật khẩu bảo mật"></alert-rule>
+        <alert-rule rule-name="請選擇您的銀行卡" rule-message="Chọn tài khoản ngân hàng"></alert-rule>
+        <alert-rule rule-name="請輸入正確的銀行帳號" rule-message="Vui lòng nhập chính xác tài khoản ngân hàng "></alert-rule>
+        <alert-rule rule-name="銀行卡需保留一組，無法刪除"
+            rule-message="Thẻ ngân hàng phải bảo lưu một loại thẻ, không thể xóa bỏ"></alert-rule>
+        <alert-rule rule-name="該銀行維護中請重新選擇" rule-message="Ngân hàng này đang bảo trì, vui lòng chọn lại"></alert-rule>
+        <alert-rule rule-name="最低提款金額" rule-message="Rút tiền tối đa là{0}điểm"></alert-rule>
+        <alert-rule rule-name="最高提款金額" rule-message="Rút tiền tối đa là{0}điểm"></alert-rule>
+        <alert-rule rule-name="請輸入保護密碼" rule-message="Vui lòng nhập mật khẩu bảo mật"></alert-rule>
+        <alert-rule rule-name="銀行卡戶名驗證次數已達上限，請聯繫客服"
+            rule-message="Số lần xác nhận đã đạt mức tối đa, vui lòng liên hệ hỗ trợ."></alert-rule>
+        <alert-rule rule-name="銀行卡驗證次數已達上限，請聯繫在線客服，謝謝"
+            rule-message="Số lần xác nhận thẻ ngân hàng đã đặt mức tối đa, vui lòng liên hệ hỗ trợ, cám ơn."></alert-rule>
+        <alert-rule rule-name="提款功能維護中，請稍後再試"
+            rule-message="Chức năng rút tiền đang bảo trì, vui lòng thử lại sau"></alert-rule>
+        <alert-rule rule-name="該銀行卡已存在，請勿重複添加"
+            rule-message="Thẻ ngân hàng này đã tồn tại, vui lòng đừng thêm lặp lại！"></alert-rule>
+        <alert-rule rule-name="此銀行卡已有會員使用，請聯繫線上客服，謝謝"
+            rule-message="Số tài khoản này đã được hội viên khác sử dụng, vui lòng liên hệ hỗ trợ, cám ơn."></alert-rule>
+        <alert-rule rule-name="獲取驗證碼" rule-message="Gửi mã"></alert-rule>
+        <alert-rule rule-name="重發驗證碼" rule-message="Gửi lại"></alert-rule>
+        <alert-rule rule-name="請先獲取驗證碼" rule-message="Vui lòng nhận mã xác nhận trước"></alert-rule>
+        <alert-rule rule-name="請查收" rule-message="Vui lòng kiểm tra"></alert-rule>
+        <alert-rule rule-name="您今日驗證次數已達上限，請聯繫客服"
+            rule-message="Số lần xác nhận trong ngày đã đạt mức tối đa, vui lòng liên hệ hỗ trợ"></alert-rule>
+        <alert-rule rule-name="您今日驗證次數已達上限，請聯繫客服專員!"
+            rule-message="Số lần xác nhận trong ngày của bạn đã đạt mức tối đa, vui lòng liên hệ hỗ trợ!"></alert-rule>
+        <alert-rule rule-name="查詢支持銀行" rule-message="Kiểm tra ngân hàng hỗ trợ"></alert-rule>
+        <alert-rule rule-name="暫不支持該卡進行提款，請使用其他銀行卡或洽詢客服，謝謝"
+            rule-message="Tạm thời không hỗ trợ thẻ này tiến hành rút tiền, vui lòng sử dụng ngân hàng khác hoặc liên hệ hỗ trợ, cám ơn."></alert-rule>
+        <alert-rule rule-name="暫不支持該卡進行提款" rule-message="Tạm thời không hỗ trợ thẻ này tiến hành rút tiền"></alert-rule>
+        <alert-rule rule-name="請使用其他銀行卡或洽詢客服，謝謝"
+            rule-message="Vui lòng sử dụng thẻ ngân hàng khác hoặc liên hệ hỗ trợ, cám ơn"></alert-rule>
+        <alert-rule rule-name="請選擇您的銀行卡" rule-message="Chọn tài khoản ngân hàng！"></alert-rule>
+        <alert-rule rule-name="請填寫支行" rule-message="Vui lòng nhập chi nhánh"></alert-rule>
+        <alert-rule rule-name="您所綁定的銀行正在進行維護，如欲提款請添加其他銀行卡"
+            rule-message="Ngân hàng bạn ràng buộc đang bảo trì, nếu muốn rút tiền vui lòng lòng thêm thẻ ngân hàng khác"></alert-rule>
+        <alert-rule rule-name="本次的提款手續費為" rule-message="Phí thủ tục rút tiền lần này là"></alert-rule>
+        <alert-rule rule-name="點,是否要提出申請?" rule-message="điểm, quý khách xác nhận muốn rút tiền không?"></alert-rule>
+        <alert-rule rule-name="發送中" rule-message="Đang gửi"></alert-rule>
+        <alert-rule rule-name="請輸入正確的卡號" rule-message="Vui lòng nhập chính xác số thẻ"></alert-rule>
+        <alert-rule rule-name="帳號不可為9704開頭" rule-message="Số tài khoản không được phép bắt đầu bằng 9704"></alert-rule>
+        <alert-rule rule-name="送出驗證碼" rule-message="Gửi mã xác nhận"></alert-rule>
+        <alert-rule rule-name="此帳號已有會員使用，請洽詢線上客服，謝謝"
+            rule-message="Số tài khoản này đã được hội viên khác sử dụng, vui lòng liên hệ hỗ trợ, cám ơn."></alert-rule>
+        <alert-rule rule-name="此卡號已有會員使用，請洽詢線上客服，謝謝"
+            rule-message="Số thẻ này đã được hội viên khác sử dụng, vui lòng liên hệ hỗ trợ, cám ơn."></alert-rule>
+        <alert-rule rule-name="請選擇銀行" rule-message="Xin chọn ngân hàng"></alert-rule>
+        <alert-rule rule-name="提款專區" rule-message="Rút tiền"></alert-rule>
+        <alert-rule rule-name="聯繫客服" rule-message="Liên hệ hỗ trợ"></alert-rule>
+        <alert-rule rule-name="很抱歉，回電服務目前關閉中，請暫時使用其他客服管道聯繫我們，謝謝！"
+            rule-message="Xin lỗi, dịch vụ gọi lại hiện tại không thể sử dụng, hãy sử dụng cách khác để liên hệ với chúng tôi, cảm ơn!"></alert-rule>
+        <alert-rule rule-name="客服人員將致電與您聯繫，請您留意接聽電話"
+            rule-message="Nhân viên hỗ trợ sẽ liên hệ bạn, vui lòng chú ý để nhận cuộc gọi"></alert-rule>
+        <alert-rule rule-name="添加銀行卡" rule-message="Thêm tài khoản"></alert-rule>
+        <alert-rule rule-name="短信" rule-message="Gửi mã"></alert-rule>
+        <alert-rule rule-name="請輸入驗證碼" rule-message="Vui lòng nhập mã xác nhận"></alert-rule>
+        <alert-rule rule-name="很抱歉，目前提款功能維護中"
+            rule-message="Xin lỗi, hiện nay chức năng rút tiền đang bảo trì"></alert-rule>
+    </div>
+
+    <div block-ui-container="" class="block-ui-container ng-scope">
+        <div class="block-ui-overlay"></div>
+        <div class="block-ui-message-container" aria-live="assertive" aria-atomic="true">
+            <div class="block-ui-message" ng-class="$_blockUiMessageClass">
+                <div class="mask_Loading_custom"></div>
+            </div>
+        </div>
+    </div>
+    <div class="footer_DW_open" id="naprut">
+        <div>
+            <a id="PlatformTransfer" class="btn_footer_transfer ng-scope">
+                <span id="PlatformTransferSpan">Chuyển quỹ</span>
+            </a><a id="MemberDeposit" class="btn_footer_deposit ng-scope">
+                <div class="img_deposit" id="MemberDepositImage"></div>
+                <span id="MemberDepositSpan">Nạp tiền</span>
+            </a><a id="MemberWithdrawal" class="btn_footer_withdrawal ng-scope" href="./RegisterAdditionally.html">
+                <div class="img_withdrawal" id="MemberWithdrawalImage"></div>
+                <span id="MemberWithdrawalSpan">Rút tiền</span>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    var count = 0;
+    function showBank() {
+        count++;
+        if (count % 2 != 0) {
+            document.querySelector("#depositSelect_In").style.display = "block";
+            document.querySelector("#DataWriteArea > div.btn_depositSelect_T > div").classList.add("on");
+        } else {
+            document.querySelector("#depositSelect_In").style.display = "none";
+            document.querySelector("#DataWriteArea > div.btn_depositSelect_T > div").classList.remove("on");
+
+        }
+    }
+    var count = 0;
+    var myFunction = function () {
+        count++;
+        if (count % 2 != 0) {
+            $('#naprut').addClass("on");
+        } else {
+            $('#naprut').removeClass("on");
+        }
+    }
+    var std = document.querySelector("#Amt2").getInnerHTML();
+    $("#k1").click(function () {
+        std = std + "1";
+        document.querySelector("#Amt2").innerHTML = std;
+        if (parseInt(std) < 200 || parseInt(std) > 1000000) {
+            document.querySelector("#amountHint").style.display = "block";
+            document.querySelector("#amountHint").style.left = "141.594px";
+            document.querySelector("#amountHint").style.top = "74px";
+            document.querySelector("#Amt2").style.color = "red";
+        } else {
+            document.querySelector("#amountHint").style.display = "none";
+            document.querySelector("#Amt2").style.color = "black";
+        }
+        document.querySelector("#realMon").innerHTML = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(parseInt(std)).slice(0, -2) + ".000";
+    });
+    $("#k2").click(function () {
+        std = std + "2";
+        document.querySelector("#Amt2").innerHTML = std;
+        if (parseInt(std) < 200 || parseInt(std) > 1000000) {
+            document.querySelector("#amountHint").style.display = "block";
+            document.querySelector("#amountHint").style.left = "141.594px";
+            document.querySelector("#amountHint").style.top = "74px";
+            document.querySelector("#Amt2").style.color = "red";
+        } else {
+            document.querySelector("#amountHint").style.display = "none";
+            document.querySelector("#Amt2").style.color = "black";
+        }
+        document.querySelector("#realMon").innerHTML = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(parseInt(std)).slice(0, -2) + ".000";
+    });
+    $("#k3").click(function () {
+        std = std + "3";
+        document.querySelector("#Amt2").innerHTML = std;
+        if (parseInt(std) < 200 || parseInt(std) > 1000000) {
+            document.querySelector("#amountHint").style.display = "block";
+            document.querySelector("#amountHint").style.left = "141.594px";
+            document.querySelector("#amountHint").style.top = "74px";
+            document.querySelector("#Amt2").style.color = "red";
+        } else {
+            document.querySelector("#amountHint").style.display = "none";
+            document.querySelector("#Amt2").style.color = "black";
+        }
+        document.querySelector("#realMon").innerHTML = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(parseInt(std)).slice(0, -2) + ".000";
+    });
+    $("#k4").click(function () {
+        std = std + "4";
+        document.querySelector("#Amt2").innerHTML = std;
+        if (parseInt(std) < 200 || parseInt(std) > 1000000) {
+            document.querySelector("#amountHint").style.display = "block";
+            document.querySelector("#amountHint").style.left = "141.594px";
+            document.querySelector("#amountHint").style.top = "74px";
+            document.querySelector("#Amt2").style.color = "red";
+        } else {
+            document.querySelector("#amountHint").style.display = "none";
+            document.querySelector("#Amt2").style.color = "black";
+        }
+        document.querySelector("#realMon").innerHTML = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(parseInt(std)).slice(0, -2) + ".000";
+    });
+    $("#k5").click(function () {
+        std = std + "5";
+        document.querySelector("#Amt2").innerHTML = std;
+        if (parseInt(std) < 200 || parseInt(std) > 1000000) {
+            document.querySelector("#amountHint").style.display = "block";
+            document.querySelector("#amountHint").style.left = "141.594px";
+            document.querySelector("#amountHint").style.top = "74px";
+            document.querySelector("#Amt2").style.color = "red";
+        } else {
+            document.querySelector("#amountHint").style.display = "none";
+            document.querySelector("#Amt2").style.color = "black";
+        }
+        document.querySelector("#realMon").innerHTML = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(parseInt(std)).slice(0, -2) + ".000";
+    });
+    $("#k6").click(function () {
+        std = std + "6";
+        document.querySelector("#Amt2").innerHTML = std;
+        if (parseInt(std) < 200 || parseInt(std) > 1000000) {
+            document.querySelector("#amountHint").style.display = "block";
+            document.querySelector("#amountHint").style.left = "141.594px";
+            document.querySelector("#amountHint").style.top = "74px";
+            document.querySelector("#Amt2").style.color = "red";
+        } else {
+            document.querySelector("#amountHint").style.display = "none";
+            document.querySelector("#Amt2").style.color = "black";
+        }
+        document.querySelector("#realMon").innerHTML = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(parseInt(std)).slice(0, -2) + ".000";
+    });
+    $("#k7").click(function () {
+        std = std + "7";
+        document.querySelector("#Amt2").innerHTML = std;
+        if (parseInt(std) < 200 || parseInt(std) > 1000000) {
+            document.querySelector("#amountHint").style.display = "block";
+            document.querySelector("#amountHint").style.left = "141.594px";
+            document.querySelector("#amountHint").style.top = "74px";
+            document.querySelector("#Amt2").style.color = "red";
+        } else {
+            document.querySelector("#amountHint").style.display = "none";
+            document.querySelector("#Amt2").style.color = "black";
+        }
+        document.querySelector("#realMon").innerHTML = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(parseInt(std)).slice(0, -2) + ".000";
+    });
+    $("#k8").click(function () {
+        std = std + "8";
+        document.querySelector("#Amt2").innerHTML = std;
+        if (parseInt(std) < 200 || parseInt(std) > 1000000) {
+            document.querySelector("#amountHint").style.display = "block";
+            document.querySelector("#amountHint").style.left = "141.594px";
+            document.querySelector("#amountHint").style.top = "74px";
+            document.querySelector("#Amt2").style.color = "red";
+        } else {
+            document.querySelector("#amountHint").style.display = "none";
+            document.querySelector("#Amt2").style.color = "black";
+        }
+        document.querySelector("#realMon").innerHTML = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(parseInt(std)).slice(0, -2) + ".000";
+    });
+    $("#k9").click(function () {
+        std = std + "9";
+        document.querySelector("#Amt2").innerHTML = std;
+        if (parseInt(std) < 200 || parseInt(std) > 1000000) {
+            document.querySelector("#amountHint").style.display = "block";
+            document.querySelector("#amountHint").style.left = "141.594px";
+            document.querySelector("#amountHint").style.top = "74px";
+            document.querySelector("#Amt2").style.color = "red";
+        } else {
+            document.querySelector("#amountHint").style.display = "none";
+            document.querySelector("#Amt2").style.color = "black";
+        }
+        document.querySelector("#realMon").innerHTML = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(parseInt(std)).slice(0, -2) + ".000";
+    });
+    $("#k0").click(function () {
+        std = std + "0";
+        document.querySelector("#Amt2").innerHTML = std;
+        if (parseInt(std) < 200 || parseInt(std) > 1000000) {
+            document.querySelector("#amountHint").style.display = "block";
+            document.querySelector("#amountHint").style.left = "141.594px";
+            document.querySelector("#amountHint").style.top = "74px";
+            document.querySelector("#Amt2").style.color = "red";
+        } else {
+            document.querySelector("#amountHint").style.display = "none";
+            document.querySelector("#Amt2").style.color = "black";
+        }
+        document.querySelector("#realMon").innerHTML = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(parseInt(std)).slice(0, -2) + ".000";
+    });
+    $("#kclear").click(function () {
+        std = std.slice(0, -1);
+        document.querySelector("#Amt2").innerHTML = std;
+        if (parseInt(std) < 200 || parseInt(std) > 1000000) {
+            document.querySelector("#amountHint").style.display = "block";
+            document.querySelector("#amountHint").style.left = "141.594px";
+            document.querySelector("#amountHint").style.top = "74px";
+            document.querySelector("#Amt2").style.color = "red";
+        } else {
+            document.querySelector("#amountHint").style.display = "none";
+            document.querySelector("#Amt2").style.color = "black";
+        }
+        document.querySelector("#realMon").innerHTML = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(parseInt(std)).slice(0, -2) + ".000";
+        if (std.length == 0) {
+            document.querySelector("#realMon").innerHTML = "0";
+        }
+    });
+    document.querySelector("#Amt2").addEventListener('change', (event) => {
+        console.log("!1111");
+        var x = document.querySelector("#Amt2").getInnerHTML();
+        if (parseInt(x) < 200 || parseInt(x) > 1000000) {
+            document.querySelector("#amountHint").style.display = "block";
+            document.querySelector("#amountHint").style.left = "141.594px";
+            document.querySelector("#amountHint").style.top = "74px";
+            document.querySelector("#Amt2").style.color = "red";
+        } else {
+            document.querySelector("#amountHint").style.display = "none";
+            document.querySelector("#Amt2").style.color = "black";
+        }
+    });
+    // 
+    $(document).ready(function () {
+        var html = '';
+        $.ajax({
+            type: "GET",
+            url: "./bankaccount.json",
+            dataType: "json",
+            success: function (response) {
+                response.forEach(element => {
+                    document.querySelector("#bank" + i).addEventListener('click', (event) => {
+                        html += '<div class=""><div class="btn_RMBbank ng-scope ng-hide"><img src="./../../Areas/Mobile/Content/Images/vi-vn/icon_RMBbank.svg"><span class="ng-binding"></span>// </div>// <img class="bankBtn ng-scope"src="/Areas/Mobile/Content/Images/vi-vn/icon_bkcard_1028.jpg"><div class="withdraw_number ng-scope">Số đuôi：<span class="t_blue ng-binding">0522</span></div></div>';
+                        document.querySelector("#DataWriteArea > div.btn_depositSelect_T > div").innerHTML = html;
+                    });
+                });
+            }
+        });
+    });
+</script>

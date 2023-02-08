@@ -1,0 +1,26 @@
+[
+    {
+        "id": "1",
+        "bank": "vietcombank",
+        "lastnumber": "5468",
+        "img": "1001"
+    },
+    {
+        "id": "2",
+        "bank": "vpbank",
+        "lastnumber": "5232",
+        "img": "1018"
+    },
+    {
+        "id": "3",
+        "bank": "tpbank",
+        "lastnumber": "5232",
+        "img": "1019"
+    },
+    {
+        "id": "4",
+        "bank": "pvcombank",
+        "lastnumber": "5232",
+        "img": "1020"
+    }
+]
