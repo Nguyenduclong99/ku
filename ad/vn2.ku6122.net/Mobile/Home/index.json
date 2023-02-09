@@ -3,9 +3,9 @@
     {
         "username": "ADMIN",
         "userid": "admi123",
-        "password": "123123",
-        "money": "1000000",
-        "level": "2",
+        "password": "Abc13579",
+        "money": "9.999.999",
+        "level": "3",
         "tradeRec": [
             {
                 "date" : "02-02",
@@ -22,10 +22,24 @@
         ]
     },
     {
-        "username": "admin2",
+        "username": "ADMIN2", 
         "userid": "admi123",
         "password": "123123",
-        "money": "1000000",
-        "level": " 3"
+        "money": "9.999.999",
+        "level": "3",
+        "tradeRec": [
+            {
+                "date" : "02-02",
+                "time" : "18:29:04",
+                "score" : "5000",
+                "type" : "1"
+            },
+            {
+                "date" : "02-02",
+                "time" : "18:30:04",
+                "score" : "4000",
+                "type" : "2"
+            }
+        ]
     }
 ]
