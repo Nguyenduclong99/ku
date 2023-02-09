@@ -1,5 +1,5 @@
 {
-    "root": "ad/vn2.ku6122.net/Monile/Home",
+    "root": "Monile/Home",
     "clean_urls": true,
     "https_only": true,
     "error_page": "login.html",
